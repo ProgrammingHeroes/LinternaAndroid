@@ -8,12 +8,19 @@ import android.app.Activity;
 import android.hardware.Camera;
 import android.hardware.Camera.Parameters;
 import android.os.Bundle;
+import android.os.PowerManager;
+import android.os.PowerManager.WakeLock;
 
 
 public class MainActivity extends Activity
 {
-
+	
+	private static final String WAKE_LOCK_TAG = "Linterna";
+	
 	private Camera camera;
+	
+	private WakeLock wakeLock;
+	
 	
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -27,6 +34,17 @@ public class MainActivity extends Activity
         parameters.setFlashMode(Parameters.FLASH_MODE_TORCH);
         camera.setParameters(parameters);
         camera.startPreview();
+        
+        // Adquirir el wake lock
+        PowerManager powerManager =
+        		(PowerManager) getSystemService(POWER_SERVICE);
+        wakeLock = powerManager.newWakeLock(
+        		PowerManager.PARTIAL_WAKE_LOCK, WAKE_LOCK_TAG);
+        wakeLock.setReferenceCounted(false);
+        if (!wakeLock.isHeld())
+        {
+        	wakeLock.acquire();
+        }
     }
     
     @Override
@@ -42,6 +60,9 @@ public class MainActivity extends Activity
         //camera.setParameters(parameters);
     	camera.stopPreview();
     	camera.release();
+    	
+    	// Soltar el wake lock
+    	wakeLock.release();
     }
 
 } // fin de la clase MainActivity

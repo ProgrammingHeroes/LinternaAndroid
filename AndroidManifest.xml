@@ -3,7 +3,9 @@
     package="com.blogspot.programmingheroes.linterna"
     android:versionCode="1"
     android:versionName="1.0" >
-
+    
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    
     <uses-permission android:name="android.permission.CAMERA" />
     
     <uses-permission android:name="android.permission.FLASHLIGHT" />
