@@ -7,5 +7,6 @@
     <string name="text_off_button">Apagar</string>
     <string name="text">¡Soy una linterna!</string>
     <string name="content_description">Icono de la aplicación</string>
+    <string name="text_error">No se puede acceder a la cámara</string>
 
 </resources>

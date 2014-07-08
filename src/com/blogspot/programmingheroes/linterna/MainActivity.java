@@ -16,6 +16,7 @@ import android.support.v4.app.NotificationCompat;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.Toast;
 
 
 /**
@@ -44,8 +45,13 @@ public class MainActivity extends Activity implements OnClickListener
     {
         super.onCreate(savedInstanceState);
         
+        // Acceder a la cámara.
+        if (!initTorch())
+        {
+        	return;
+        }
+        
         // Encender el flash.
-        torch = new Torch();
         torch.on();
         
         // Cargar interfaz gráfica.
@@ -72,7 +78,29 @@ public class MainActivity extends Activity implements OnClickListener
         createNotification();
     }
     
-    public void createNotification()
+    private boolean initTorch()
+    {
+    	try
+    	{
+	    	// Acceder a la cámara.
+	    	torch = new Torch();
+    	}
+    	catch (Exception e)
+    	{
+    		// Mostrar mensaje de error al usuario.
+    		Toast.makeText(this,
+    				getResources().getString(R.string.text_error),
+    				Toast.LENGTH_LONG).show();
+    		// Salir de la aplicación.
+    		finish();
+    		
+    		return false;
+    	}
+    	
+    	return true;
+    }
+    
+    private void createNotification()
     {
     	Intent intent = new Intent(this, MainActivity.class);
     	
@@ -90,7 +118,7 @@ public class MainActivity extends Activity implements OnClickListener
     	notificationManager.notify(NOTIFICATION_ID, notification);
     }
     
-    public void destroyNotification()
+    private void destroyNotification()
     {
     	notificationManager.cancel(NOTIFICATION_ID);
     }
@@ -107,6 +135,7 @@ public class MainActivity extends Activity implements OnClickListener
     	// No es necesario apagar el flash si vamos a cerrar la
     	// cámara, se apaga automáticamente.
     	torch.release();
+    	torch = null;
     	
     	// Soltar el wake lock.
     	wakeLock.release();
@@ -124,6 +153,30 @@ public class MainActivity extends Activity implements OnClickListener
 		{
 			torch.on();
 			createNotification();
+		}
+	}
+	
+	@Override
+	protected void onStart()
+	{
+		super.onStart();
+		
+		if (torch == null && initTorch())
+		{
+			wakeLock.acquire();
+		}
+	}
+	
+	@Override
+	protected void onStop()
+	{
+		super.onStop();
+		
+		if (torch != null && !torch.isOn())
+		{
+			torch.release();
+			torch = null;
+			wakeLock.release();
 		}
 	}
 
