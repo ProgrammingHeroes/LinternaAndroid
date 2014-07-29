@@ -1,5 +1,5 @@
-Linterna Android
-================
+**Linterna Android**
+====================
 
 Sencilla y ligera linterna para Android.
 Proyecto ideal para principiantes. Viene acompañada con una serie de videos en los que podrás ver paso a paso como se hace.
@@ -26,6 +26,14 @@ En YouTube puedes encontrar una lista de reproducción con todos los videotutori
 Del mismo modo también tienes disponible en el blog de ProgrammingHeroes todos los articulos en los que han ido apareciendo los videos.
 
 [Ver artículos](http://programmingheroes.blogspot.com/2014/04/crear-una-linterna-para-android.html).
+
+Capturas
+========
+
+![](https://raw.githubusercontent.com/ProgrammingHeroes/LinternaAndroid/master/screenshots/screenshot1.png)
+![](https://raw.githubusercontent.com/ProgrammingHeroes/LinternaAndroid/master/screenshots/screenshot2.png)
+![](https://raw.githubusercontent.com/ProgrammingHeroes/LinternaAndroid/master/screenshots/screenshot3.png)
+![](https://raw.githubusercontent.com/ProgrammingHeroes/LinternaAndroid/master/screenshots/screenshot4.png)
 
 Contacto
 ========
