@@ -27,14 +27,6 @@ Del mismo modo también tienes disponible en el blog de ProgrammingHeroes todos 
 
 [Ver artículos](http://programmingheroes.blogspot.com/2014/04/crear-una-linterna-para-android.html).
 
-Capturas
-========
-
-![](https://raw.githubusercontent.com/ProgrammingHeroes/LinternaAndroid/master/screenshots/screenshot1.png)
-![](https://raw.githubusercontent.com/ProgrammingHeroes/LinternaAndroid/master/screenshots/screenshot2.png)
-![](https://raw.githubusercontent.com/ProgrammingHeroes/LinternaAndroid/master/screenshots/screenshot3.png)
-![](https://raw.githubusercontent.com/ProgrammingHeroes/LinternaAndroid/master/screenshots/screenshot4.png)
-
 Contacto
 ========
 
